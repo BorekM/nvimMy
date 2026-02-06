@@ -11,27 +11,38 @@ if status_cmp then
   capabilities = vim.tbl_deep_extend('force', capabilities, cmp_nvim_lsp.default_capabilities())
 end
 
+local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = "󰋽 " }
 -- 3. NOVÝ PŘÍSTUP (Neovim 0.11+)
 -- Místo lspconfig.server.setup() použijeme nativní vim.lsp.config
 -- Tímto se zcela vyhneme lspconfig frameworku.
 -- 1. Konfigurace globálního chování diagnostiky
 vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = signs.Error,
+      [vim.diagnostic.severity.WARN]  = signs.Warn,
+      [vim.diagnostic.severity.HINT]  = signs.Hint,
+      [vim.diagnostic.severity.INFO]  = signs.Info,
+    },
+  },
+  -- Zde můžete přidat i další nastavení, pokud chcete
+  underline = true,
+  update_in_insert = false,
   virtual_text = {
     spacing = 4,
     prefix = '●', -- nebo '■', '󰋽' atd.
   },
-  signs = true,     -- Ponechá ikonky na levé straně
-  underline = true, -- Podtrhne chybný kód
-  update_in_insert = false, -- Neaktualizovat při psaní (méně rušivé)
+  -- signs = true,     -- Ponechá ikonky na levé straně
+  -- underline = true, -- Podtrhne chybný kód
+  -- update_in_insert = false, -- Neaktualizovat při psaní (méně rušivé)
   severity_sort = true,
 })
 
 -- 2. Volitelné: Změna ikonek v sign column (pokud chceš místo písmen E, W ikony)
-local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = "󰋽 " }
-for type, icon in pairs(signs) do
-  local name = "DiagnosticSign" .. type
-  vim.fn.sign_define(name, { text = icon, texthl = name, numhl = name })
-end
+-- for type, icon in pairs(signs) do
+--   local name = "DiagnosticSign" .. type
+--   vim.fn.sign_define(name, { text = icon, texthl = name, numhl = name })
+-- end
 
 local servers = {
   lua_ls = {
