@@ -36,10 +36,11 @@ require('lualine').setup {
     lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_c = {'filename'},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'cdate', 'ctime', 'progress'},
-   -- lualine_d = {'cdate', 'ctime'},
-    lualine_z = {'location'},
-
+    lualine_y = {{
+        'datetime',
+        style = '%H:%M:%S', -- Formát času: Hodiny:Minuty:Sekundy
+      },'progress'},
+    lualine_z = {'location'}
   },
   inactive_sections = {
     lualine_a = {},
@@ -47,12 +48,25 @@ require('lualine').setup {
     lualine_c = {'filename'},
     lualine_x = {'location'},
     lualine_y = {},
-    lualine_z = {},
-    --lualine_d = {}
+    lualine_z = {}
   },
   tabline = {},
   winbar = {},
   inactive_winbar = {},
   extensions = {}
 }
-
+  -- sections = {
+  --   lualine_a = {
+  --     {
+  --       'filename',
+  --       path = 1,
+  --     }
+  --   },
+  --  lualine_z = {
+  --     {
+  --       'datetime',
+  --       style = '%H:%M:%S', -- Formát času: Hodiny:Minuty:Sekundy
+  --     }
+  --   } 
+  -- }
+-- }

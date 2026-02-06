@@ -23,7 +23,6 @@ vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 require("lazy").setup({
-  
   "nvim-lualine/lualine.nvim",
   "nvim-treesitter/nvim-treesitter",
   "nvim-tree/nvim-tree.lua",
