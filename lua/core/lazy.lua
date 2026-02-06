@@ -23,6 +23,7 @@ vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 require("lazy").setup({
+  spec = {
   "nvim-lualine/lualine.nvim",
   "nvim-treesitter/nvim-treesitter",
   "nvim-tree/nvim-tree.lua",
@@ -35,33 +36,13 @@ require("lazy").setup({
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
   "neovim/nvim-lspconfig",
-  {
+  -- {
   "folke/which-key.nvim", -- Jméno pluginu (MUSÍ ZDE BÝT)
-  event = "VeryLazy",
-  opts = {
-    -- Zde začíná vaše konfigurace (to, co vyvolalo chybu)
-    preset = "modern",
-    win = {
-      border = "rounded",
-      padding = { 1, 2 },
-      title = true,
-      title_pos = "center",
-    },
-    icons = {
-      breadcrumb = "»",
-      separator = "➜",
-      group = "+",
-    },
-    layout = {
-      width = { min = 20, max = 50 },
-      spacing = 3,
-    },
-  },
   -- Tato funkce zajistí, že se setup zavolá s výše definovanými opts
-  config = function(_, opts)
-    require("which-key").setup(opts)
-  end,
-},
+--   config = function(_, opts)
+--     require("which-key").setup(opts)
+--   end,
+-- },
   {
     'goolord/alpha-nvim',
     config = function ()
@@ -74,9 +55,15 @@ require("lazy").setup({
   priority = 1000,
   opts = {},
 },
+
   {
     "nvim-telescope/telescope.nvim", tag = "0.1.4",
     dependencies = { "nvim-lua/plenary.nvim" }
+  },
+},
+  rocks = {
+    enabled = false, -- Úplně vypne podporu luarocks v lazy.nvim
+    hererocks = false, -- Vypne automatickou instalaci hererocks
   },
 
   -- Configure any other settings here. See the documentation for more details.
@@ -84,4 +71,5 @@ require("lazy").setup({
   install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
+
 })
