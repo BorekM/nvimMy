@@ -1,0 +1,6 @@
+require("core.plugins_config.treesitter")
+require("core.plugins_config.lualine")
+require("core.plugins_config.completions")
+require("core.plugins_config.telescope")
+require("core.plugins_config.lsp_config")
+require("core.plugins_config.nvimtree_config")
