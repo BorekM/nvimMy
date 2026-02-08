@@ -1,6 +1,7 @@
 require("core.plugins_config.treesitter")
 require("core.plugins_config.whichkey")
 require("core.plugins_config.lualine")
+require("core.plugins_config.noice")
 require("core.plugins_config.alpha_config")
 require("core.plugins_config.completions")
 require("core.plugins_config.telescope")
