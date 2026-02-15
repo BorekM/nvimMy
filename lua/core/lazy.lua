@@ -38,6 +38,10 @@ require("lazy").setup({
 		"neovim/nvim-lspconfig",
 
 		{
+			"sphamba/smear-cursor.nvim",
+			opts = {},
+		},
+		{
 			"rmagatti/auto-session",
 			lazy = false,
 			keys = {
@@ -72,7 +76,7 @@ require("lazy").setup({
 			cmd = { "ConformInfo" },
 			keys = {
 				{
-					"<leader>f",
+					"<leader>nf",
 					function()
 						require("conform").format({ async = true, lsp_fallback = true })
 					end,
