@@ -103,6 +103,14 @@ require("lazy").setup({
 			},
 		},
 		{
+			"akinsho/bufferline.nvim",
+			version = "*",
+			dependencies = { "nvim-tree/nvim-web-devicons" },
+			config = function()
+				require("bufferline").setup({})
+			end,
+		},
+		{
 			"folke/which-key.nvim",
 			event = "VeryLazy", -- Načte se až když je potřeba
 			opts = {
